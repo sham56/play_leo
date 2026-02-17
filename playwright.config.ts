@@ -1,4 +1,10 @@
 import { defineConfig, devices } from '@playwright/test';
+import * as dotenv from 'dotenv';
+
+dotenv.config({ path: '.env' });
+
+const env = process.env.TEST_ENV ?? 'staging';
+
 
 /**
  * Read environment variables from file.
@@ -7,6 +13,12 @@ import { defineConfig, devices } from '@playwright/test';
 // import dotenv from 'dotenv';
 // import path from 'path';
 // dotenv.config({ path: path.resolve(__dirname, '.env') });
+
+/*export const pgURL =
+  env === 'production'
+    ? 'https://play.leo-lang.org'
+    : 'https://stage-pg.leo-lang.org';
+*/
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -25,8 +37,12 @@ export default defineConfig({
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+    
     /* Base URL to use in actions like `await page.goto('')`. */
-    // baseURL: 'http://localhost:3000',
+    baseURL:
+      env === 'production'
+        ? 'https://play.leo-lang.org'
+        : 'https://stage-pg.leo-lang.org',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -84,3 +100,8 @@ export default defineConfig({
   //   reuseExistingServer: !process.env.CI,
   // },
 });
+
+//export const baseURL = defineConfig.use.baseURL;
+
+
+

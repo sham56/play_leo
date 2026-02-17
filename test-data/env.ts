@@ -1,0 +1,1 @@
+export const ENV = process.env.TEST_ENV ?? 'staging';
