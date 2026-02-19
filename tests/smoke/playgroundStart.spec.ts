@@ -68,4 +68,14 @@ test.describe('Playground Start', () => {
         await privacyModal.acceptButton.click();
     });
 
+
+    test('Welcome modal is displayed on first visit', async ({ page }) => {
+        await playground_open(page);
+        const privacyModal = new PrivacyTermsModal(page);
+        await privacyModal.expectAcceptButton(privacyModalData.acceptButton.name);
+        await privacyModal.acceptButton.click();
+    });
+
+
+
 });

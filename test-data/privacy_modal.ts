@@ -70,3 +70,17 @@ export const termsPageData = {
     termsOfUse: { name: 'Terms of Use', href: './terms_of_use' },
   },
 }
+
+export const welcomeModalData = {
+  title: 'Welcome to the Leo Playground!',
+  content: 'Leo is a statically-typed programming language built for writing private applications. It provides developers with familiar programming paradigms and powerful cryptographic primitives. Here you can try Leo and deploy and execute programs directly from the browser!',
+
+  cancelButton: {
+    name: 'Skip',
+  },
+  
+  acceptButton: {
+    name: 'Learn More',
+  },
+};
+
