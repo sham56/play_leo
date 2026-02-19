@@ -52,7 +52,19 @@ export class PrivacyTermsModal {
         }; });
         expect(rectAcceptButton.width).toBeGreaterThan(0);
         expect(rectAcceptButton.height).toBeGreaterThan(0);
+    }
 
+    async expectCancelButton(expectedName: string) {
+        await expect(this.cancelButton).toHaveText(expectedName);
+        await expect(this.cancelButton).toHaveCSS('opacity', '1');
+        const rectCancelButton = await this.cancelButton.evaluate(el => {
+            const r = el.getBoundingClientRect();
+            return {
+                width: r.width,
+                height: r.height,
+        }; });
+        expect(rectCancelButton.width).toBeGreaterThan(0);
+        expect(rectCancelButton.height).toBeGreaterThan(0);
     }
 
     async expectCancelButtonHidden() {

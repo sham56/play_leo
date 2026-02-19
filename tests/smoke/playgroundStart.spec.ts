@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { playground_open } from '../../helpers/pg_open';
 import { PrivacyTermsModal, PrivecyTermsPages } from '../../POM/privacy_terms';
-import { privacyModalData, privacyPageData, termsPageData  } from '../../test-data/privacy_modal';
+import { privacyModalData, privacyPageData, termsPageData, welcomeModalData  } from '../../test-data/privacy_modal';
 
 test.describe('Playground Start', () => {
 
@@ -74,6 +74,14 @@ test.describe('Playground Start', () => {
         const privacyModal = new PrivacyTermsModal(page);
         await privacyModal.expectAcceptButton(privacyModalData.acceptButton.name);
         await privacyModal.acceptButton.click();
+
+        const welcomeModal = new PrivacyTermsModal(page);
+        await welcomeModal.expectTitle(welcomeModalData.title);
+        await welcomeModal.expectContent(welcomeModalData.content);
+        await welcomeModal.expectAcceptButton(welcomeModalData.acceptButton.name);
+        await welcomeModal.expectCancelButton(welcomeModalData.cancelButton.name);
+        await welcomeModal.cancelButton.click();
+
     });
 
 
