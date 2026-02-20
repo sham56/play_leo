@@ -3,7 +3,7 @@ import { Locator, Page, expect } from '@playwright/test';
 /****************************************************************/
 /*****    Modal window "Privacy Policy & Terms of Use"      *****/
 /****************************************************************/
-export class PrivacyTermsModal {
+export class ModalWin {
     readonly modal: Locator;
     readonly title: Locator;
     readonly content: Locator;

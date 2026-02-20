@@ -1,5 +1,5 @@
 import { expect, test, Page } from '@playwright/test';
-import { PrivacyTermsModal, PrivecyTermsPages } from '../POM/privacy_terms';
+import { ModalWin } from '../POM/privacy_terms';
 
 export async function playground_open(page: Page) {
     test.setTimeout(60000);
@@ -16,10 +16,11 @@ export async function playground_full_open(page: Page) {
     await expect(spinner).toBeVisible();
     await spinner.waitFor({ state: 'hidden'});
 
-    const modalWin = new PrivacyTermsModal(page);
+    const modalWin = new ModalWin(page);
     await expect(modalWin.acceptButton).toHaveText('Accept');
     await modalWin.acceptButton.click();
     await expect(modalWin.cancelButton).toHaveText('Skip');
     await modalWin.cancelButton.click();
     
 }
+

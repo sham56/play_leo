@@ -1,13 +1,13 @@
 import { expect, test } from '@playwright/test';
 import { playground_open } from '../../helpers/pg_open';
-import { PrivacyTermsModal, PrivecyTermsPages } from '../../POM/privacy_terms';
+import { ModalWin, PrivecyTermsPages } from '../../POM/privacy_terms';
 import { privacyModalData, privacyPageData, termsPageData, welcomeModalData  } from '../../test-data/privacy_modal';
 
 test.describe('Playground Start', () => {
 
     test('Privacy Policy and Terms of Use window', async ({ page }) => {
         await playground_open(page);
-        const privacyModal = new PrivacyTermsModal(page);
+        const privacyModal = new ModalWin(page);
         await expect(privacyModal.modal).toBeVisible();
         await expect(privacyModal.title).toBeVisible();
         await expect(privacyModal.content).toBeVisible();
@@ -71,11 +71,11 @@ test.describe('Playground Start', () => {
 
     test('Welcome modal is displayed on first visit', async ({ page }) => {
         await playground_open(page);
-        const privacyModal = new PrivacyTermsModal(page);
+        const privacyModal = new ModalWin(page);
         await privacyModal.expectAcceptButton(privacyModalData.acceptButton.name);
         await privacyModal.acceptButton.click();
 
-        const welcomeModal = new PrivacyTermsModal(page);
+        const welcomeModal = new ModalWin(page);
         await welcomeModal.expectTitle(welcomeModalData.title);
         await welcomeModal.expectContent(welcomeModalData.content);
         await welcomeModal.expectAcceptButton(welcomeModalData.acceptButton.name);
