@@ -7,7 +7,6 @@ import { Terminal } from '../../POM/terminal';
 import { examples, helloworld, auction } from '../../test-data/examples';
 
 test.describe('Examples test', () => {
-
     test('Examples', async ({ page }) => {
         await playground_full_open(page);
         for (const [key, example] of Object.entries(examples)) {
@@ -29,6 +28,4 @@ test.describe('Examples test', () => {
         }
 
     });
-
-
 });
