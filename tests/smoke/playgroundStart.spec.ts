@@ -83,7 +83,4 @@ test.describe('Playground Start', () => {
         await welcomeModal.cancelButton.click();
 
     });
-
-
-
 });

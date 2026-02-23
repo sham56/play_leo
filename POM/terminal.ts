@@ -17,10 +17,13 @@ export class Terminal {
 
     async setFocus() {
         await this.content.click();
+        const xterm_focus = await this.content.evaluate(el => el.className);
+        //console.log('Terminal content class:', xterm_focus);
+        expect(xterm_focus).toBe('xterm-rows xterm-focus');
     }
 
     async expectTerminalOutput(expected: string) {
-        await expect(this.content).toContainText('Output');
+        //await expect(this.content).toContainText('Output');
         await expect(this.content).toContainText(expected);
     }
 

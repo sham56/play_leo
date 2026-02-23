@@ -6,9 +6,9 @@ import { ExamplesDropdown } from '../../POM/dropdowns';
 import { Terminal } from '../../POM/terminal';
 import { examples, helloworld, auction } from '../../test-data/examples';
 
-test.describe('Auction example test', () => {
+test.describe('Examples test', () => {
 
-    test('Auction example', async ({ page }) => {
+    test('Examples', async ({ page }) => {
         await playground_full_open(page);
         for (const [key, example] of Object.entries(examples)) {
             
@@ -19,7 +19,7 @@ test.describe('Auction example test', () => {
             await loadExample.acceptButton.click();    
             
             const terminal = new Terminal(page);
-            expect(terminal.content).toContainText(example.input);
+            expect (terminal.rows.first()).toHaveText(`$ ${example.input}`);
             await terminal.setFocus();
             await terminal.content.press('Enter');
             await terminal.waitForExecution();

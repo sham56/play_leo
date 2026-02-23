@@ -51,6 +51,18 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
+       name: 'firefox',
+       use: { 
+          ...devices['Desktop Firefox'],
+          deviceScaleFactor: undefined,
+          viewport: null, // Disable Playwright's default viewport
+          launchOptions: {
+              args: ['--start-maximized'], // Maximize the window
+          },              
+       },
+    },
+
+    {
       name: 'chromium',
       use: { 
           ...devices['Desktop Chrome'],
@@ -61,11 +73,6 @@ export default defineConfig({
           },      
         }
     },
-
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
 
     // {
     //   name: 'webkit',
@@ -87,10 +94,18 @@ export default defineConfig({
     //   name: 'Microsoft Edge',
     //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
     // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    // },
+    /*{
+        name: 'Google Chrome',
+        use: { 
+          ...devices['Desktop Chrome'], 
+          channel: 'chrome', 
+          deviceScaleFactor: undefined,
+          viewport: null, // Disable Playwright's default viewport
+          launchOptions: {
+              args: ['--start-maximized'], // Maximize the window
+          },   
+        },
+    },*/
   ],
 
   /* Run your local dev server before starting the tests */

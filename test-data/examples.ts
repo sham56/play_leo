@@ -1,26 +1,67 @@
-export const helloworld = {
-    name: 'helloworld',
-    program_name: 'helloworld.aleo',
-    input: 'leo run main 1u32 2u32',
-    output: '3u32',
-}
+import { helloworld_stage, auction_stage, basic_bank_stage,bubblesort_stage, core_stage, groups_stage, interest_stage, 
+         lottery_stage, message_stage, simple_token_stage, tictactoe_stage, token_stage, twoadicity_stage, vote_stage } from './examples-stage';
+import { helloworld_prod, auction_prod, basic_bank_prod, bubblesort_prod, core_prod, groups_prod, interest_prod, 
+         lottery_prod, message_prod, simple_token_prod, tictactoe_prod, token_prod, twoadicity_prod, vote_prod } from './examples-prod';
 
-export const auction = {
-    name: 'auction',
-    program_name: 'auction.aleo',
-    input: 'leo run place_bid aleo1rhgdu77hgyqd3xjj8ucu3jj9r2krwz6mnzyd80gncr5fxcwlh5rsvzp9px 10u64',
-    output: 'amount: 10u64.private',
-    full_output: '{\n' +
-        + 'owner: aleo1ashyu96tjwe63u0gtnnv8z5lhapdu4l5pjsl2kha7fv7hvz2eqxs5dz0rg.private,\n' +
-        + 'bidder: aleo1rhgdu77hgyqd3xjj8ucu3jj9r2krwz6mnzyd80gncr5fxcwlh5rsvzp9px.private,\n' +
-        + 'amount: 10u64.private,\n' +
-        + 'is_winner: false.private,\n' +
-        + '_nonce: 7237808032430179785364340215336684385884479382670462337293581784287409549823group.public,\n' +
-        + '_version: 1u8.public\n' +
-        + '}',
-}
+const ENV = process.env.TEST_ENV ?? 'staging';
+
+export const helloworld =
+  ENV === 'production' ? helloworld_prod : helloworld_stage;
+
+export const auction =
+  ENV === 'production' ? auction_prod : auction_stage;  
+  
+
+export const basic_bank =
+  ENV === 'production' ? basic_bank_prod : basic_bank_stage;  
+
+export const bubblesort =
+  ENV === 'production' ? bubblesort_prod : bubblesort_stage;  
+
+export const core =
+  ENV === 'production' ? core_prod : core_stage;
+
+export const groups =
+  ENV === 'production' ? groups_prod : groups_stage;  
+  
+
+export const interest =
+  ENV === 'production' ? interest_prod : interest_stage; 
+  
+export const lottery =
+  ENV === 'production' ? lottery_prod : lottery_stage;
+
+export const message =
+  ENV === 'production' ? message_prod : message_stage;
+
+export const simple_token =
+  ENV === 'production' ? simple_token_prod : simple_token_stage;
+
+export const tictactoe = 
+  ENV === 'production' ? tictactoe_prod : tictactoe_stage;
+
+export const token =
+  ENV === 'production' ? token_prod : token_stage;
+
+export const twoadicity =
+  ENV === 'production' ? twoadicity_prod : twoadicity_stage;
+
+export const vote =
+  ENV === 'production' ? vote_prod : vote_stage;
 
 export const examples = {
     helloworld,
     auction,
+    basic_bank,
+    bubblesort,
+    core,
+    groups,
+    interest,
+    lottery,
+    message,
+    simple_token,
+    tictactoe,
+    token,
+    twoadicity,
+    vote
 }

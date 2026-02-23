@@ -13,7 +13,8 @@ export class ExamplesDropdown {
     }
 
     async itemClick(item_name: string) {
-        const item = this.items.filter({ hasText: item_name });
+        //const item = this.items.filter({ hasText: item_name });
+        const item = this.items.getByText(item_name, { exact: true });
         await item.click();
     }
 }
