@@ -18,7 +18,7 @@ test.describe('Examples test', () => {
             await loadExample.acceptButton.click();    
             
             const terminal = new Terminal(page);
-            expect (terminal.rows.first()).toHaveText(`$ ${example.input}`);
+            await expect(terminal.rows.first()).toHaveText(`$ ${example.input}`);
             await terminal.setFocus();
             await terminal.content.press('Enter');
             await terminal.waitForExecution();

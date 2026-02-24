@@ -45,7 +45,9 @@ export default defineConfig({
         : 'https://stage-pg.leo-lang.org',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    screenshot: 'only-on-failure',
     trace: 'on-first-retry',
+    video: 'retain-on-failure',
   },
 
   /* Configure projects for major browsers */
@@ -54,26 +56,26 @@ export default defineConfig({
     {
       name: 'chromium',
       use: { 
-          ...devices['Desktop Chrome'],
-          viewport: { width: 1920, height: 1080 },
-          //deviceScaleFactor: undefined,
-          //viewport: null, // Disable Playwright's default viewport
-          //launchOptions: {
-          //      args: ['--start-maximized'], // Maximize the window
-          //},      
-        }
+        ...devices['Desktop Chrome'],
+        viewport: { width: 1920, height: 1080 },
+        /*deviceScaleFactor: undefined,
+        viewport: null, // Disable Playwright's default viewport
+        launchOptions: {
+          args: ['--start-maximized'], // Maximize the window
+        },*/      
+      }
     },
 
-    {
+      {
         name: 'Google Chrome',
         use: { 
           ...devices['Desktop Chrome'], 
           channel: 'chrome', 
           viewport: { width: 1920, height: 1080 },
         },
-    },
+      },
         
-    /*
+    
     {
         name: 'Microsoft Edge',
         use: { 
@@ -98,7 +100,7 @@ export default defineConfig({
           viewport: { width: 1920, height: 1080 },
         },
      },
-*/
+
 
     /* Test against mobile viewports. */
     // {

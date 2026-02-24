@@ -11,15 +11,17 @@ export class Terminal {
         this.page = page;
         this.terminal = page.locator('#terminal').filter({ visible: true });
         this.content = this.terminal.locator('.xterm-rows');
-        this.rows = this.content.locator('> *');
+        this.rows = this.content.locator('> *').filter({visible: true});
         this.resizer = page.locator('.terminal-resizer');
     }
 
     async setFocus() {
         await this.content.click();
+        await expect(this.content).toHaveClass('xterm-rows xterm-focus');
         const xterm_focus = await this.content.evaluate(el => el.className);
         //console.log('Terminal content class:', xterm_focus);
         expect(xterm_focus).toBe('xterm-rows xterm-focus');
+        await expect(this.rows.first().locator('> span').last()).toHaveClass('xterm-cursor xterm-cursor-blink xterm-cursor-block')
     }
 
     async expectTerminalOutput(expected: string) {
