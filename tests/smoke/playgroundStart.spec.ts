@@ -1,7 +1,8 @@
 import { expect, test } from '@playwright/test';
-import { playground_open } from '../../helpers/pg_open';
-import { ModalWin, PrivecyTermsPages } from '../../POM/privacy_terms';
+import { playground_open, onboarding_open } from '../../helpers/pg_open';
+import { ModalWin, PrivecyTermsPages, SHEPHERD } from '../../POM/privacy_terms';
 import { privacyModalData, privacyPageData, termsPageData, welcomeModalData  } from '../../test-data/privacy_modal';
+import { shepherds, shepherdsCount } from '../../test-data/onboarding';
 
 test.describe('Playground Start', () => {
 
@@ -82,5 +83,21 @@ test.describe('Playground Start', () => {
         await welcomeModal.expectCancelButton(welcomeModalData.cancelButton.name);
         await welcomeModal.cancelButton.click();
 
+    });
+
+    test('Onboarding', async ({ page }) => {
+        await onboarding_open(page);
+        const count = Object.keys(shepherds).length;
+        const shepherd = new SHEPHERD(page);
+        for (const [key, shepherdData] of Object.entries(shepherds)) {
+            let expected_title = `${shepherdData.title}${key}/${shepherdsCount}`;
+            expect(await shepherd.expectShepherdTitle(expected_title));
+            expect(await shepherd.expectShepherdTarget(shepherdData.target));
+            if (key.toString() == shepherdsCount.toString()) {
+                await shepherd.understoodButton.click();
+            } else {
+                await shepherd.nextButton.click();
+            }
+        }
     });
 });
