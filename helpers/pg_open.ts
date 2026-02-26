@@ -1,20 +1,19 @@
 import { expect, test, Page } from '@playwright/test';
 import { ModalWin } from '../POM/privacy_terms';
+import { Playground } from '../POM/playground';
 
 export async function playground_open(page: Page) {
     test.setTimeout(60000);
     await page.goto('/');
-    const spinner = page.locator('#cover-spinner');
-    await expect(spinner).toBeVisible();
-    await spinner.waitFor({ state: 'hidden'});
+    const pg = new Playground(page);
+    await pg.spinnerWait();
 }
 
 export async function playground_full_open(page: Page) {
     test.setTimeout(60000);
     await page.goto('/');
-    const spinner = page.locator('#cover-spinner');
-    await expect(spinner).toBeVisible();
-    await spinner.waitFor({ state: 'hidden'});
+    const pg = new Playground(page);
+    await pg.spinnerWait();
 
     const modalWin = new ModalWin(page);
     await expect(modalWin.acceptButton).toHaveText('Accept');
@@ -26,9 +25,8 @@ export async function playground_full_open(page: Page) {
 export async function onboarding_open(page: Page) {
     test.setTimeout(60000);
     await page.goto('/');
-    const spinner = page.locator('#cover-spinner');
-    await expect(spinner).toBeVisible();
-    await spinner.waitFor({ state: 'hidden'});
+    const pg = new Playground(page);
+    await pg.spinnerWait();
 
     const modalWin = new ModalWin(page);
     await expect(modalWin.acceptButton).toHaveText('Accept');

@@ -1,10 +1,9 @@
 import { expect, test } from '@playwright/test';
 import { playground_full_open } from '../../helpers/pg_open';
-import { ModalWin, PrivecyTermsPages } from '../../POM/privacy_terms';
-import { privacyModalData, privacyPageData, termsPageData, welcomeModalData  } from '../../test-data/privacy_modal';
+import { ModalWin } from '../../POM/privacy_terms';
 import { ExamplesDropdown } from '../../POM/dropdowns';
 import { Terminal } from '../../POM/terminal';
-import { examples, helloworld, auction } from '../../test-data/examples';
+import { examples } from '../../test-data/examples-data/examples';
 
 test.describe('Examples test', () => {
     test('Examples', async ({ page }) => {

@@ -15,4 +15,4 @@ export const SHEPHERDS_PROD = {
     '18': Shield_base, 
 }
 
-export const ShepherdsCount_prod = 18;
+//export const ShepherdsCount_prod = 18;

@@ -16,4 +16,4 @@ export const SHEPHERDS_STAGE = {
     '19': Shield_base, 
 }
 
-export const ShepherdsCount_stage = 19;
+//export const ShepherdsCount_stage = 19;
